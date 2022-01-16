@@ -1,12 +1,12 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
-
+const cors = require("cors");
 const pathToUsers = path.join(__dirname, "./data/users.json");
 const app = express();
 
+app.use(cors());
 app.use(express.json());
-
 app.get("/users", (req, res) => {
 	if (fs.existsSync(pathToUsers)) res.sendFile(pathToUsers);
 	else res.send("There is no data in the database");
@@ -133,6 +133,6 @@ app.delete("/users/:id", (req, res) => {
 	});
 });
 
-app.listen(3000, () => {
+app.listen(5555, () => {
 	console.log("Server is Starting....");
 });
