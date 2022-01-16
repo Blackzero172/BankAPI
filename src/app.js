@@ -4,7 +4,7 @@ const fs = require("fs");
 const cors = require("cors");
 const pathToUsers = path.join(__dirname, "./data/users.json");
 const app = express();
-
+const port = process.env.PORT || 5555;
 app.use(cors());
 app.use(express.json());
 app.get("/users", (req, res) => {
@@ -133,6 +133,6 @@ app.delete("/users/:id", (req, res) => {
 	});
 });
 
-app.listen(5555, () => {
+app.listen(port, () => {
 	console.log("Server is Starting....");
 });
