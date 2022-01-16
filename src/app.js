@@ -28,7 +28,7 @@ app.post("/users", (req, res) => {
 	const { id = 0, cash = 0, credit = 0 } = req.body;
 	fs.readFile(pathToUsers, "utf-8", (err, data) => {
 		const users = err ? [] : JSON.parse(data);
-		if (users.find((account) => account.id === id)) {
+		if (users.find((user) => user.id === id)) {
 			res.send("User already exists");
 		} else {
 			if (!id) {
